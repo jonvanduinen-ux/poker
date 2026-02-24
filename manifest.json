@@ -1,0 +1,17 @@
+{
+  "name": "Monthly Poker Game",
+  "short_name": "Poker Night",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0b5d1e",
+  "theme_color": "#0b5d1e",
+  "description": "Track monthly poker players, location, and game status.",
+  "icons": [
+    {
+      "src": "assets/poker-chip.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
