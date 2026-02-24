@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b5d1e" />
+  <title>Monthly Poker Night</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="assets/poker-chip.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="table">
+    <header>
+      <h1>♠ Poker Signup ♥</h1>
+      <p class="tagline">Sign up for this month’s game in seconds.</p>
+    </header>
+
+    <section class="card" id="next-game">
+      <h2>NEXT GAME</h2>
+      <p><strong>Status:</strong> <span id="game-status" class="status-pill">Game ON</span></p>
+      <p><strong>Date & Time:</strong> <span id="game-date">Friday, 7:00 PM</span></p>
+      <p><strong>Location:</strong> <a id="game-location" href="#" target="_blank" rel="noopener noreferrer">TBD</a></p>
+      <a href="#" id="more-details-link">More details</a>
+    </section>
+
+    <section class="card" id="player-count-section">
+      <h3>Players Signed Up: <span id="player-count">0</span></h3>
+      <p id="player-threshold" class="threshold">We need 8 players.</p>
+    </section>
+
+    <section class="card">
+      <h2>ADD YOUR NAME</h2>
+      <form id="signup-form">
+        <label>
+          Name
+          <input id="name" name="name" required maxlength="50" autocomplete="name" />
+        </label>
+        <label>
+          Phone Number
+          <input id="phone" name="phone" required maxlength="20" autocomplete="tel" placeholder="(555) 555-5555" />
+        </label>
+        <label>
+          Note
+          <input id="note" name="note" maxlength="120" placeholder="Running late, bringing chips, etc." />
+        </label>
+        <button type="submit">I’m In</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>PLAYER LIST</h2>
+      <ul id="players"></ul>
+    </section>
+    <section class="card admin-bar">
+      <button id="admin-open" class="ghost-btn" type="button">Admin</button>
+    </section>
+  </main>
+
+  <dialog id="details-modal">
+    <h3>Game Details</h3>
+    <p>
+      We typically play two $10 games of Texas Hold'em and pay each other via Venmo.
+      Bring your own drinks and a snack to share. Send out a reminder 3 days before
+      the game to confirm you are coming.
+    </p>
+    <button id="details-close" type="button">Close</button>
+  </dialog>
+
+  <dialog id="admin-modal">
+    <form id="admin-login-form" class="stack">
+      <h3>Admin Access</h3>
+      <label>
+        Password
+        <input id="admin-password" type="password" required />
+      </label>
+      <button type="submit">Unlock</button>
+      <button id="admin-cancel" type="button" class="ghost-btn">Cancel</button>
+      <p id="admin-error" class="error"></p>
+    </form>
+
+    <form id="admin-panel" class="stack hidden">
+      <h3>Admin Panel</h3>
+      <label>
+        Date & Time
+        <input id="admin-date" type="datetime-local" />
+      </label>
+      <label>
+        Location Label
+        <input id="admin-location-name" maxlength="80" />
+      </label>
+      <label>
+        Google Maps Link
+        <input id="admin-location-url" type="url" placeholder="https://maps.google.com/..." />
+      </label>
+      <label>
+        Game Status
+        <select id="admin-status">
+          <option>Game ON</option>
+          <option>Game CANCELLED</option>
+          <option>Location Changed</option>
+        </select>
+      </label>
+      <label class="inline">
+        <input id="admin-show-phones" type="checkbox" /> Show phone numbers publicly
+      </label>
+      <button type="submit">Save Settings</button>
+      <button id="copy-text-list" type="button">Copy Mass Text List</button>
+      <textarea id="text-list" rows="4" readonly></textarea>
+      <button id="reset-month" type="button" class="warn">Reset for Next Month</button>
+
+      <h4>Game History</h4>
+      <ul id="history-list"></ul>
+
+      <button id="admin-close" type="button" class="ghost-btn">Close</button>
+    </form>
+  </dialog>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
